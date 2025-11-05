@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Financial Analysis Platform</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <style>
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f6f9fb;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: teal;
+      color: white;
+      text-align: center;
+      padding: 20px 0;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    main {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    footer {
+      margin-top: 40px;
+      background-color: #e8f4f8;
+      text-align: center;
+      padding: 15px;
+      font-size: 14px;
+      color: #555;
+      border-top: 1px solid #d0e4e8;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 26px;
+    }
+
+    h2, h3 {
+      margin: 0;
+    }
+
+    a {
+      color: teal;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 800px;
+    }
+
+    button:hover {
+      background-color: #008b8b;
+    }
+
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Financial Analysis and Forecasting Platform</h1>
+  </header>
+
+  <main class="container">
+    {% block content %}
+    {% endblock %}
+  </main>
+
+  <footer>
+    <p> 2019 Financial Forecasting App | Developer: Hüseyin Susever</p>
+  </footer>
+</body>
+</html>
+

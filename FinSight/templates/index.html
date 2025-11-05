@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block content %}
+<section style="display:flex; flex-direction:column; align-items:center; gap:16px; margin-top:30px;">
+  <h2 style="color:teal;">GDP & Share Price Forecast</h2>
+
+  {% if error %}
+    <div style="background:#ffe6e6; color:#800; padding:10px; border-radius:6px; width:90%; max-width:800px;">
+      <strong>Hata:</strong> {{ error }}
+    </div>
+  {% endif %}
+
+  <form method="POST" style="display:flex; flex-direction:column; gap:10px; width:320px;">
+    <label>Country:</label>
+    <select name="country" required style="padding:8px; border-radius:5px; border:1px solid #ccc;">
+      {% for c in countries %}
+        <option value="{{ c }}" {% if c == selected_country %}selected{% endif %}>{{ c }}</option>
+      {% endfor %}
+    </select>
+
+    <label>Interest rate (%):</label>
+    <input type="number" step="0.01" name="interest" placeholder="örn. 2.5" required>
+
+    <label>Inflation (%):</label>
+    <input type="number" step="0.01" name="inflation" placeholder="örn. 3.1" required>
+
+    <label>GDP Growth (%):</label>
+    <input type="number" step="0.01" name="gdp" placeholder="örn. 1.8" required>
+
+    <button type="submit" style="padding:10px; border:none; border-radius:6px; background:teal; color:white; cursor:pointer;">Predict</button>
+  </form>
+
+  <img src="{{ url_for('static', filename='plot.png') }}" alt="GDP plot" style="width:80%; max-width:1000px; border-radius:8px; box-shadow:0 6px 20px rgba(0,0,0,0.08);">
+
+  {% if prediction %}
+    <p style="font-size:18px; margin-top:12px;">Estimated Share Value for <strong>{{ selected_country }}</strong>: <span style="color:teal;">${{ prediction }}</span></p>
+  {% endif %}
+</section>
+{% endblock %}
+
+
+

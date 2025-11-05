@@ -1,0 +1,31 @@
+body {
+  font-family: "Segoe UI", sans-serif;
+  background: #f8f9fa;
+  color: #333;
+  text-align: center;
+}
+
+nav {
+  background: #212529;
+  color: white;
+  padding: 1rem;
+}
+
+form {
+  background: white;
+  padding: 20px;
+  margin: 20px auto;
+  width: 300px;
+  border-radius: 8px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.1);
+}
+
+button {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+button:hover { background: #0056b3; }

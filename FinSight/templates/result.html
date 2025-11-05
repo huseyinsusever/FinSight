@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Finans Tahmini Sonucu</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f7f9;
+            color: #333;
+            text-align: center;
+            margin: 0;
+            padding: 30px;
+        }
+
+        h1 {
+            color: #222;
+            margin-bottom: 10px;
+        }
+
+        .result-box {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            max-width: 600px;
+            margin: 20px auto;
+        }
+
+        canvas {
+            margin-top: 30px;
+        }
+
+        .prediction {
+            font-size: 1.3em;
+            color: #007bff;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="result-box">
+        <h1>Makine Öğrenimi Finans Tahmini</h1>
+        <p>Girilen Değerlerle Model Sonucu:</p>
+        <p class="prediction">Tahmin Sonucu: {{ prediction }}</p>
+
+        <canvas id="financeChart" width="400" height="250"></canvas>
+    </div>
+<div id="chart" data-values='{{ values | tojson }}'></div>
+
+<script>
+  const el = document.getElementById('chart');
+  const dataValues = JSON.parse(el.dataset.values);
+  // şimdi güvenle kullanabilirsin
+  console.log(dataValues);
+</script>
+
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Faiz Oranı', 'Enflasyon', 'GDP'],
+                datasets: [{
+                    label: 'Girdi Değerleri',
+                    data: dataValues,
+                    backgroundColor: ['#4bc0c0', '#ff6384', '#36a2eb']
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                },
+                plugins: {
+                    legend: {
+                        labels: { color: '#333' }
+                    },
+                    title: {
+                        display: true,
+                        text: 'Modelde Kullanılan Finans Verileri',
+                        color: '#333',
+                        font: { size: 16 }
+                    }
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>
